@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,8 +24,8 @@ public class BetMatch implements java.io.Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
-	//@Id @Column(name="matchid")
-	//private String matchid;
+	@Column(name="matchid")
+	private String matchid;
 	
 	@Column(name="teama")	
 	private String teama;
@@ -38,12 +39,12 @@ public class BetMatch implements java.io.Serializable{
 	@Column(name="teamb")	
 	private String teamb;
 	
-	/*public String getMatchid() {
+	public String getMatchid() {
 		return matchid;
 	}
 	public void setMatchid(String matchid) {
 		this.matchid = matchid;
-	}*/
+	}
 	public String getTeama() {
 		return teama;
 	}
@@ -69,7 +70,7 @@ public class BetMatch implements java.io.Serializable{
 		this.ora = ora;
 	}
     
-	@OneToMany(mappedBy = "match", cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(fetch=FetchType.LAZY, mappedBy = "match", cascade = CascadeType.ALL,orphanRemoval = true)
     /*@JoinColumns({ 
       @JoinColumn(name="matchid", referencedColumnName="matchid"),
     })*/

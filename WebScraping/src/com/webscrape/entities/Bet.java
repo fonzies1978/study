@@ -71,7 +71,7 @@ public class Bet  implements java.io.Serializable{
 	}	
 	
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "matchid")
+    @JoinColumn(name = "matchid" ,insertable=false, updatable=false)
     private BetMatch match;
 
 	public BetMatch getMatch() {
